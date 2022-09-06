@@ -1,0 +1,524 @@
+[gd_scene load_steps=50 format=2]
+
+[ext_resource path="res://hard.gd" type="Script" id=1]
+[ext_resource path="res://tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://sprites/tower_placement_tileset.png" type="Texture" id=3]
+[ext_resource path="res://samurai/sword/swordShoot.wav" type="AudioStream" id=4]
+[ext_resource path="res://bgm/bgm_mix.wav" type="AudioStream" id=5]
+[ext_resource path="res://bgm/Audio test.mp3" type="AudioStream" id=6]
+[ext_resource path="res://samurai/sword/spawn.wav" type="AudioStream" id=7]
+[ext_resource path="res://samurai/sai/spawn_sai.wav" type="AudioStream" id=8]
+[ext_resource path="res://chest/chest1.png" type="Texture" id=9]
+[ext_resource path="res://chest/chest2.png" type="Texture" id=10]
+[ext_resource path="res://chest/chest3.png" type="Texture" id=11]
+[ext_resource path="res://enemy/animated_torch.png" type="Texture" id=12]
+[ext_resource path="res://samurai/sai/saiShoot.wav" type="AudioStream" id=13]
+[ext_resource path="res://hard.tres" type="TileSet" id=14]
+[ext_resource path="res://Treasure_OpeningSound.mp3" type="AudioStream" id=15]
+[ext_resource path="res://War Drum Sound Effect (2).mp3" type="AudioStream" id=16]
+[ext_resource path="res://EnemyAlert.mp3" type="AudioStream" id=17]
+[ext_resource path="res://Kenney Bold.ttf" type="DynamicFontData" id=18]
+[ext_resource path="res://Kenney Future Narrow.ttf" type="DynamicFontData" id=19]
+[ext_resource path="res://Kenney Future Square.ttf" type="DynamicFontData" id=20]
+[ext_resource path="res://gameover.wav" type="AudioStream" id=21]
+[ext_resource path="res://wooden button.png" type="Texture" id=22]
+[ext_resource path="res://wooden button press.png" type="Texture" id=23]
+[ext_resource path="res://wooden button disabled.png" type="Texture" id=24]
+[ext_resource path="res://Button_Plate Click.mp3" type="AudioStream" id=25]
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 12 )
+region = Rect2( 0, 0, 32, 64 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 12 )
+region = Rect2( 32, 0, 32, 64 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 12 )
+region = Rect2( 64, 0, 32, 64 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 12 )
+region = Rect2( 96, 0, 32, 64 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 12 )
+region = Rect2( 128, 0, 32, 64 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 12 )
+region = Rect2( 160, 0, 32, 64 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = ExtResource( 12 )
+region = Rect2( 192, 0, 32, 64 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 12 )
+region = Rect2( 224, 0, 32, 64 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 12 )
+region = Rect2( 256, 0, 32, 64 )
+
+[sub_resource type="SpriteFrames" id=12]
+animations = [ {
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "treasure",
+"speed": 5.0
+} ]
+
+[sub_resource type="StyleBoxFlat" id=27]
+bg_color = Color( 0.984314, 0.878431, 0.905882, 1 )
+
+[sub_resource type="DynamicFont" id=19]
+size = 11
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 18 )
+
+[sub_resource type="DynamicFont" id=37]
+size = 26
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 19 )
+
+[sub_resource type="DynamicFont" id=21]
+size = 24
+font_data = ExtResource( 19 )
+
+[sub_resource type="DynamicFont" id=22]
+size = 21
+font_data = ExtResource( 20 )
+
+[sub_resource type="DynamicFont" id=36]
+size = 21
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 19 )
+
+[sub_resource type="StyleBoxEmpty" id=39]
+
+[sub_resource type="DynamicFont" id=38]
+size = 17
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 19 )
+
+[sub_resource type="SpriteFrames" id=41]
+animations = [ {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "treasure",
+"speed": 5.0
+} ]
+
+[sub_resource type="DynamicFont" id=42]
+size = 24
+outline_size = 1
+outline_color = Color( 0, 0, 0, 0 )
+use_filter = true
+font_data = ExtResource( 19 )
+
+[sub_resource type="DynamicFont" id=43]
+outline_color = Color( 0.0901961, 0.960784, 0.12549, 1 )
+use_filter = true
+font_data = ExtResource( 18 )
+
+[sub_resource type="DynamicFont" id=44]
+size = 24
+outline_color = Color( 0, 0, 0, 0 )
+use_filter = true
+font_data = ExtResource( 18 )
+
+[sub_resource type="TileSet" id=1]
+0/name = "tower_placement_tileset.png 0"
+0/texture = ExtResource( 3 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 64 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "tower_placement_tileset.png 1"
+1/texture = ExtResource( 3 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 64, 0, 64, 64 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
+[node name="Hard Main Page" type="Node"]
+script = ExtResource( 1 )
+
+[node name="tilemap" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_quadrant_size = 1
+format = 1
+tile_data = PoolIntArray( 14, 37, 0, 65539, 2, 0, 65540, 2, 0, 65541, 2, 0, 65542, 2, 0, 65543, 2, 0, 65544, 2, 0, 65545, 2, 0, 65546, 2, 0, 65547, 2, 0, 65548, 2, 0, 65550, 37, 0, 131078, 37, 0, 131082, -1073741824, 0, 131086, 37, 0, 196612, 39, 0, 196614, 37, 0, 196616, 1610612780, 0, 196618, -1073741824, 0, 196620, 2, 0, 196621, 2, 0, 196622, 37, 0, 262148, 1610612773, 0, 262150, 37, 0, 262152, 1610612773, 0, 262154, -1073741824, 0, 262158, 37, 0, 327684, 1610612773, 0, 327686, 1610612775, 0, 327688, 1610612773, 0, 327690, 2, 0, 327691, 2, 0, 327692, 6, 0, 327694, 37, 0, 393220, 1610612773, 0, 393224, 1610612773, 0, 393230, 37, 0, 458756, -1610612692, 0, 458757, -1610612699, 0, 458758, -1610612699, 0, 458759, -1610612699, 0, 458760, -1610612699, 0, 458761, -1610612699, 0, 458762, -1610612699, 0, 458763, -1610612699, 0, 458764, -1610612699, 0, 458765, -1610612699, 0, 458766, 1610612775, 0 )
+
+[node name="nav" type="Navigation2D" parent="."]
+
+[node name="tilemap_nav" type="TileMap" parent="nav"]
+visible = false
+tile_set = ExtResource( 2 )
+cell_quadrant_size = 1
+format = 1
+tile_data = PoolIntArray( 3, 9, 0, 4, 9, 0, 5, 9, 0, 6, 9, 0, 7, 9, 0, 8, 9, 0, 9, 9, 0, 10, 9, 0, 11, 9, 0, 12, 9, 0, 13, 9, 0, 15, 9, 0, 65549, 9, 0, 65551, 9, 0, 131075, 9, 0, 131076, 9, 0, 131077, 9, 0, 131079, 9, 0, 131080, 9, 0, 131081, 9, 0, 131083, 9, 0, 131084, 9, 0, 131085, 9, 0, 131087, 9, 0, 196611, 9, 0, 196613, 9, 0, 196615, 9, 0, 196617, 9, 0, 196619, 9, 0, 196623, 9, 0, 262147, 9, 0, 262149, 9, 0, 262151, 9, 0, 262153, 9, 0, 262155, 9, 0, 262156, 9, 0, 262157, 9, 0, 262159, 9, 0, 327683, 9, 0, 327685, 9, 0, 327687, 9, 0, 327689, 9, 0, 327693, 9, 0, 327695, 9, 0, 393219, 9, 0, 393221, 9, 0, 393222, 9, 0, 393223, 9, 0, 393225, 9, 0, 393226, 9, 0, 393227, 9, 0, 393228, 9, 0, 393229, 9, 0, 393231, 9, 0, 458755, 9, 0, 458767, 9, 0, 524291, 9, 0, 524292, 9, 0, 524293, 9, 0, 524294, 9, 0, 524295, 9, 0, 524296, 9, 0, 524297, 9, 0, 524298, 9, 0, 524299, 9, 0, 524300, 9, 0, 524301, 9, 0, 524302, 9, 0, 524303, 9, 0 )
+
+[node name="newtilemap_nav" type="TileMap" parent="nav"]
+visible = false
+tile_set = ExtResource( 14 )
+format = 1
+tile_data = PoolIntArray( 2, 58, 0, 3, 60, 0, 4, 58, 0, 5, 58, 0, 6, 58, 0, 7, 58, 0, 8, 58, 0, 9, 58, 0, 10, 58, 0, 11, 58, 0, 12, 58, 0, 13, 60, 0, 15, 58, 0, 65549, 58, 0, 65551, 58, 0, 131075, 60, 0, 131076, 58, 0, 131077, 60, 0, 131079, 60, 0, 131080, 58, 0, 131081, 60, 0, 131083, 60, 0, 131084, 58, 0, 131085, 60, 0, 131087, 58, 0, 196611, 58, 0, 196613, 58, 0, 196615, 58, 0, 196617, 58, 0, 196619, 58, 0, 196623, 58, 0, 262147, 58, 0, 262149, 58, 0, 262151, 58, 0, 262153, 58, 0, 262155, 60, 0, 262156, 58, 0, 262157, 60, 0, 262159, 58, 0, 327683, 58, 0, 327685, 58, 0, 327687, 58, 0, 327689, 58, 0, 327693, 58, 0, 327695, 58, 0, 393219, 58, 0, 393221, 60, 0, 393222, 58, 0, 393223, 60, 0, 393225, 60, 0, 393226, 58, 0, 393227, 58, 0, 393228, 58, 0, 393229, 60, 0, 393231, 58, 0, 458755, 58, 0, 458767, 58, 0, 524291, 60, 0, 524292, 58, 0, 524293, 58, 0, 524294, 58, 0, 524295, 58, 0, 524296, 58, 0, 524297, 58, 0, 524298, 58, 0, 524299, 58, 0, 524300, 58, 0, 524301, 58, 0, 524302, 58, 0, 524303, 60, 0 )
+
+[node name="newtilemap_nav2" type="TileMap" parent="nav"]
+tile_set = ExtResource( 14 )
+format = 1
+tile_data = PoolIntArray( 2, 58, 0, 3, 1610612798, 0, 4, 40, 0, 5, 40, 0, 6, 40, 0, 7, 40, 0, 8, 40, 0, 9, 40, 0, 10, 40, 0, 11, 40, 0, 12, 40, 0, 13, 40, 0, 15, 41, 0, 65549, 39, 0, 65551, 41, 0, 131075, 1610612777, 0, 131076, 42, 0, 131077, 1610612777, 0, 131079, 1610612778, 0, 131080, 1610612787, 0, 131081, 1610612776, 0, 131083, 40, 0, 131084, 40, 0, 131085, 40, 0, 131087, 41, 0, 196611, 41, 0, 196613, 41, 0, 196615, 41, 0, 196617, 39, 0, 196619, 39, 0, 196623, 41, 0, 262147, 41, 0, 262149, 41, 0, 262151, 41, 0, 262153, 39, 0, 262155, 1610612776, 0, 262156, 40, 0, 262157, 1610612776, 0, 262159, 41, 0, 327683, 41, 0, 327685, 41, 0, 327687, 41, 0, 327689, 39, 0, 327693, 39, 0, 327695, 41, 0, 393219, 41, 0, 393221, 1610612778, 0, 393222, 42, 0, 393223, 1610612778, 0, 393225, 1610612776, 0, 393226, 40, 0, 393227, 40, 0, 393228, 40, 0, 393229, 1610612776, 0, 393231, 41, 0, 458755, 41, 0, 458767, 41, 0, 524291, 1610612777, 0, 524292, 42, 0, 524293, 42, 0, 524294, 42, 0, 524295, 42, 0, 524296, 42, 0, 524297, 42, 0, 524298, 42, 0, 524299, 42, 0, 524300, 42, 0, 524301, 42, 0, 524302, 42, 0, 524303, 1610612777, 0 )
+
+[node name="start_position" type="Position2D" parent="."]
+position = Vector2( 989, 7 )
+
+[node name="enemySpawn" type="AnimatedSprite" parent="start_position"]
+position = Vector2( -21, 20 )
+scale = Vector2( 0.75, 0.75 )
+frames = SubResource( 12 )
+frame = 6
+playing = true
+
+[node name="enemySpawn2" type="AnimatedSprite" parent="start_position"]
+position = Vector2( 20, 20 )
+scale = Vector2( 0.75, 0.75 )
+frames = SubResource( 12 )
+frame = 5
+playing = true
+
+[node name="end_position" type="Position2D" parent="."]
+position = Vector2( 227, 33 )
+
+[node name="Treasure" type="AnimatedSprite" parent="end_position"]
+position = Vector2( -2, -5 )
+scale = Vector2( 1.5, 1.5 )
+frames = SubResource( 2 )
+animation = "treasure"
+frame = 2
+playing = true
+
+[node name="mob_spawn_timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="entities" type="YSort" parent="."]
+
+[node name="user_interface" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="panel" type="Panel" parent="user_interface"]
+margin_left = -4.0
+margin_right = 193.0
+margin_bottom = 577.0
+custom_styles/panel = SubResource( 27 )
+
+[node name="points" type="Label" parent="user_interface"]
+margin_left = 5.0
+margin_top = 119.0
+margin_right = 42.0
+margin_bottom = 149.0
+rect_scale = Vector2( 2.5, 2.5 )
+custom_colors/font_color = Color( 0.980392, 0.0745098, 0.0745098, 1 )
+custom_colors/font_color_shadow = Color( 0.952941, 0.176471, 0.176471, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 0
+custom_fonts/font = SubResource( 19 )
+text = "0"
+align = 2
+valign = 1
+autowrap = true
+
+[node name="Kills" type="Label" parent="user_interface"]
+margin_left = 96.0
+margin_top = 142.0
+margin_right = 159.0
+margin_bottom = 166.0
+rect_scale = Vector2( 1.5, 1.5 )
+custom_colors/font_color = Color( 0.956863, 0.196078, 0.196078, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 0.0627451, 0.054902, 0.054902, 1 )
+custom_fonts/font = SubResource( 19 )
+text = "Kills:"
+align = 1
+valign = 1
+
+[node name="gold" type="Label" parent="user_interface"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 12.0
+margin_top = 265.0
+margin_right = 154.0
+margin_bottom = 265.0
+custom_colors/font_color = Color( 0.952941, 0.901961, 0.109804, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 37 )
+text = "Gold: 500"
+
+[node name="next_wave" type="Label" parent="user_interface"]
+margin_left = 19.0
+margin_top = 440.0
+margin_right = 178.0
+margin_bottom = 467.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 21 )
+text = "Count Down"
+
+[node name="next_wave_time" type="Label" parent="user_interface"]
+margin_left = 33.0
+margin_top = 466.0
+margin_right = 97.0
+margin_bottom = 491.0
+rect_scale = Vector2( 2, 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 22 )
+text = "00"
+align = 1
+valign = 1
+
+[node name="tower" type="TextureButton" parent="user_interface"]
+margin_left = -1290.0
+margin_top = -291.0
+margin_right = 1205.0
+margin_bottom = 542.0
+rect_scale = Vector2( 0.055, 0.055 )
+rect_pivot_offset = Vector2( 1400, 633.333 )
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 22 )
+texture_pressed = ExtResource( 23 )
+texture_disabled = ExtResource( 24 )
+
+[node name="swordLabel" type="Label" parent="user_interface/tower"]
+anchor_top = 0.081
+anchor_bottom = 0.081
+margin_left = 439.98
+margin_top = 139.192
+margin_right = 567.98
+margin_bottom = 171.192
+rect_scale = Vector2( 13, 13 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_fonts/font = SubResource( 36 )
+custom_styles/normal = SubResource( 39 )
+text = "Sword -50"
+align = 1
+valign = 1
+
+[node name="tower2" type="TextureButton" parent="user_interface"]
+margin_left = -1290.0
+margin_top = -233.0
+margin_right = 1205.0
+margin_bottom = 600.0
+rect_scale = Vector2( 0.055, 0.055 )
+rect_pivot_offset = Vector2( 1400, 633.333 )
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 22 )
+texture_pressed = ExtResource( 23 )
+texture_disabled = ExtResource( 24 )
+
+[node name="saiLabel" type="Label" parent="user_interface/tower2"]
+anchor_top = 0.081
+anchor_bottom = 0.081
+margin_left = 345.454
+margin_top = 141.624
+margin_right = 472.454
+margin_bottom = 173.624
+rect_scale = Vector2( 13, 13 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_fonts/font = SubResource( 36 )
+text = "    Sai -150"
+align = 1
+valign = 1
+
+[node name="start_next_wave" type="TextureButton" parent="user_interface"]
+margin_left = 16.0
+margin_top = 519.0
+margin_right = 2511.0
+margin_bottom = 1352.0
+rect_scale = Vector2( 0.065, 0.055 )
+texture_normal = ExtResource( 22 )
+texture_pressed = ExtResource( 23 )
+texture_disabled = ExtResource( 24 )
+
+[node name="nextwaveLabel" type="Label" parent="user_interface/start_next_wave"]
+margin_left = 300.0
+margin_top = 200.0
+margin_right = 400.0
+margin_bottom = 220.0
+rect_scale = Vector2( 20, 20 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_fonts/font = SubResource( 38 )
+text = "Next Wave"
+
+[node name="Treasure" type="AnimatedSprite" parent="user_interface"]
+position = Vector2( 113, 218 )
+scale = Vector2( 1.5, 1.5 )
+frames = SubResource( 41 )
+animation = "treasure"
+frame = 2
+playing = true
+
+[node name="treasure" type="Label" parent="user_interface/Treasure"]
+light_mask = 0
+margin_left = -51.0
+margin_top = -13.333
+margin_right = -6.99996
+margin_bottom = 13.667
+size_flags_vertical = 1
+custom_colors/font_color = Color( 1, 0.611765, 0.0666667, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 0 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_fonts/font = SubResource( 42 )
+text = "1
+"
+align = 1
+valign = 1
+max_lines_visible = 1
+
+[node name="level" type="Label" parent="user_interface"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 36.0
+margin_top = 45.0
+margin_right = 122.0
+margin_bottom = 69.0
+rect_scale = Vector2( 1.2, 1.2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 0
+custom_fonts/font = SubResource( 43 )
+text = "wave"
+align = 1
+valign = 1
+
+[node name="Label" type="Label" parent="user_interface"]
+margin_left = 22.0
+margin_top = 9.0
+margin_right = 220.0
+margin_bottom = 45.0
+rect_scale = Vector2( 0.8, 0.8 )
+custom_colors/font_color = Color( 0.0980392, 0.113725, 0.0862745, 1 )
+custom_fonts/font = SubResource( 44 )
+text = "Hard Mode"
+
+[node name="Line2D" type="Line2D" parent="user_interface/Label"]
+position = Vector2( -28.75, 92.5 )
+scale = Vector2( 1.25, 1.25 )
+points = PoolVector2Array( 1, 0, 192, 0 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+
+[node name="tower_placement" type="TileMap" parent="."]
+tile_set = SubResource( 1 )
+cell_quadrant_size = 1
+format = 1
+
+[node name="LevelUpSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+volume_db = 5.0
+
+[node name="SpawnSword" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = 1.0
+mix_target = 2
+
+[node name="SwordSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = 1.0
+mix_target = 2
+
+[node name="SpawnSai" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = 1.0
+mix_target = 2
+
+[node name="SaiSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+volume_db = 1.0
+mix_target = 2
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -1.0
+
+[node name="TreasureOpeningSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+volume_db = 5.0
+
+[node name="EnemylvlUp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+volume_db = 3.0
+
+[node name="EnemylvlUp2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 17 )
+volume_db = 3.0
+
+[node name="GameOver" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 21 )
+volume_db = 3.0
+
+[node name="tilemap2" type="TileMap" parent="."]
+visible = false
+tile_set = ExtResource( 2 )
+cell_quadrant_size = 1
+format = 1
+tile_data = PoolIntArray( 14, 1610612793, 0, 65539, -1073741767, 0, 65540, -1073741767, 0, 65541, -1073741767, 0, 65542, -1073741767, 0, 65543, -1073741767, 0, 65544, -1073741767, 0, 65545, -1073741767, 0, 65546, -1073741770, 0, 65547, -1610612679, 0, 65548, -1610612678, 0, 65550, 1610612793, 0, 131078, 57, 0, 131082, 57, 0, 131086, 1610612793, 0, 196612, 1610612791, 0, 196614, 57, 0, 196616, -1610612678, 0, 196618, 57, 0, 196620, -1610612683, 0, 196621, -1610612683, 0, 196622, 1610612793, 0, 262148, 57, 0, 262150, 57, 0, 262152, 1610612793, 0, 262154, 57, 0, 262158, 1610612793, 0, 327684, 57, 0, 327686, -1073741766, 0, 327688, 1610612793, 0, 327690, -1073741766, 0, 327691, -1073741767, 0, 327692, 55, 0, 327694, 1610612793, 0, 393220, 57, 0, 393224, 1610612793, 0, 393230, 1610612793, 0, 458756, -1073741766, 0, 458757, -1073741767, 0, 458758, -1073741767, 0, 458759, -1073741767, 0, 458760, 1610612794, 0, 458761, -1073741767, 0, 458762, -1073741767, 0, 458763, -1073741767, 0, 458764, -1073741767, 0, 458765, -1073741767, 0, 458766, -1610612682, 0 )
+
+[node name="onClicked" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 25 )
+volume_db = 5.0
+
+[connection signal="timeout" from="mob_spawn_timer" to="." method="_on_mob_spawn_timer_timeout"]
+[connection signal="pressed" from="user_interface/tower" to="." method="_on_tower_pressed"]
+[connection signal="pressed" from="user_interface/tower2" to="." method="_on_tower2_pressed"]
+[connection signal="pressed" from="user_interface/start_next_wave" to="." method="_on_start_next_wave_pressed"]

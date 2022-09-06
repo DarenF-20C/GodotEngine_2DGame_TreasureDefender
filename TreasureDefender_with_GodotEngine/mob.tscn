@@ -1,0 +1,79 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://mob.gd" type="Script" id=1]
+[ext_resource path="res://enemy/die/0.png" type="Texture" id=2]
+[ext_resource path="res://enemy/die/1.png" type="Texture" id=3]
+[ext_resource path="res://enemy/die/2.png" type="Texture" id=4]
+[ext_resource path="res://enemy/die/3.png" type="Texture" id=5]
+[ext_resource path="res://enemy/die/4.png" type="Texture" id=6]
+[ext_resource path="res://enemy/die/5.png" type="Texture" id=7]
+[ext_resource path="res://enemy/die/9.png" type="Texture" id=8]
+[ext_resource path="res://enemy/die/6.png" type="Texture" id=9]
+[ext_resource path="res://enemy/die/7.png" type="Texture" id=10]
+[ext_resource path="res://enemy/die/8.png" type="Texture" id=11]
+[ext_resource path="res://enemy/walk/a6.png" type="Texture" id=12]
+[ext_resource path="res://enemy/walk/a7.png" type="Texture" id=13]
+[ext_resource path="res://enemy/walk/a2.png" type="Texture" id=14]
+[ext_resource path="res://enemy/walk/a3.png" type="Texture" id=15]
+[ext_resource path="res://enemy/walk/a4.png" type="Texture" id=16]
+[ext_resource path="res://enemy/walk/a0.png" type="Texture" id=17]
+[ext_resource path="res://enemy/walk/a1.png" type="Texture" id=18]
+[ext_resource path="res://enemy/walk/a5.png" type="Texture" id=19]
+[ext_resource path="res://enemy/walk/a8.png" type="Texture" id=20]
+[ext_resource path="res://enemy/walk/a9.png" type="Texture" id=21]
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 19 ), ExtResource( 13 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "walk",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 8 ) ],
+"loop": false,
+"name": "died",
+"speed": 15.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 27, 40 )
+
+[sub_resource type="Animation" id=7]
+resource_name = "back"
+length = 0.5
+loop = true
+
+[sub_resource type="Animation" id=8]
+length = 0.5
+loop = true
+
+[sub_resource type="Animation" id=9]
+resource_name = "left"
+length = 0.5
+loop = true
+
+[sub_resource type="Animation" id=10]
+resource_name = "right"
+length = 0.5
+loop = true
+
+[node name="mob" type="Area2D"]
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -38 )
+scale = Vector2( 0.3, 0.3 )
+frames = SubResource( 6 )
+animation = "walk"
+frame = 9
+playing = true
+
+[node name="collision_shape" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -38 )
+shape = SubResource( 1 )
+
+[node name="animation" type="AnimationPlayer" parent="."]
+anims/back = SubResource( 7 )
+anims/front = SubResource( 8 )
+anims/left = SubResource( 9 )
+anims/right = SubResource( 10 )

@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://projectile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://samurai/sai/weapon_sai.png" type="Texture" id=2]
+[ext_resource path="res://projectile2.gd" type="Script" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 7.0
+height = 14.0
+
+[node name="projectile2" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="sprite" parent="." index="0"]
+position = Vector2( 4.76837e-07, 0 )
+scale = Vector2( -0.0654947, 0.0550513 )
+texture = ExtResource( 2 )
+
+[node name="collision_shape" parent="." index="1"]
+shape = SubResource( 1 )

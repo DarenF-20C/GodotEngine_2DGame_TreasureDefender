@@ -1,0 +1,109 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://victory.wav" type="AudioStream" id=1]
+[ext_resource path="res://wooden button.png" type="Texture" id=2]
+[ext_resource path="res://victoryImage.jpg" type="Texture" id=3]
+[ext_resource path="res://Kenney Bold.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Kenney Future Narrow.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://VictoryScreenEasy.gd" type="Script" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 71
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 26
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 5 )
+
+[node name="VictoryScreen(Easy)" type="Node"]
+script = ExtResource( 6 )
+
+[node name="BgImage" type="TextureRect" parent="."]
+margin_left = -2.0
+margin_top = -1.0
+margin_right = 1865.0
+margin_bottom = 1048.0
+rect_scale = Vector2( 0.55, 0.55 )
+texture = ExtResource( 3 )
+expand = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 87.0
+margin_top = 81.0
+margin_right = 619.0
+margin_bottom = 196.0
+custom_colors/default_color = Color( 0.952941, 0.901961, 0.109804, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 5
+custom_constants/shadow_offset_y = 5
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[wave amp=5] Victory [/wave]"
+text = " Victory "
+
+[node name="NextLevelButton" type="TextureButton" parent="."]
+margin_left = 759.0
+margin_top = 374.0
+margin_right = 3254.0
+margin_bottom = 1207.0
+rect_scale = Vector2( 0.1, 0.1 )
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 2 )
+
+[node name="NextLevelLabel" type="Label" parent="NextLevelButton"]
+margin_left = 276.923
+margin_top = 215.385
+margin_right = 432.923
+margin_bottom = 242.385
+rect_scale = Vector2( 13, 13 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Next Level"
+align = 1
+
+[node name="QuitButton" type="TextureButton" parent="."]
+margin_left = 757.0
+margin_top = 473.0
+margin_right = 3252.0
+margin_bottom = 1306.0
+rect_scale = Vector2( 0.1, 0.1 )
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource( 2 )
+
+[node name="QuitLabel" type="Label" parent="QuitButton"]
+margin_left = 390.0
+margin_top = 180.001
+margin_right = 503.0
+margin_bottom = 207.001
+rect_scale = Vector2( 15, 15 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Exit"
+align = 1
+
+[node name="VictorySound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+margin_left = 269.0
+margin_top = 511.0
+margin_right = 715.0
+margin_bottom = 544.0
+custom_fonts/normal_font = SubResource( 3 )
+text = "You've completed easy mode!"
+
+[connection signal="pressed" from="NextLevelButton" to="." method="_on_RestartButton_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_QuitButton_pressed"]
